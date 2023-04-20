@@ -1,0 +1,30 @@
+<%- include("header") %>
+
+  <div class="container container-fluid">
+      <form action="/orders/new" method="POST">
+        <div class="mb-3">
+          <label for="product_name" class="form-label">Product Name</label>
+          <input type="text" class="form-control" id="product_name" name="product_name" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="product_id" class="form-label">Product Id</label>
+          <input type="number" class="form-control" id="product_id" name="product_id" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="availability" class="form-label">availability</label>
+          <input type="number" class="form-control" id="availability" name="availability" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">price</label>
+          <input type="number" class="form-control" id="price" name="price" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+
+<%- include("footer") %>

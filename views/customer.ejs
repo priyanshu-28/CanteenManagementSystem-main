@@ -1,0 +1,80 @@
+<%- include("header") %>
+
+
+<div class="newOrderForm container rounded p-5">
+  <div class="h1">Get Customer Details</div>
+  <form action="customer/getDetails" method="POST">
+  <div class="mb-3">
+    <label for="CustomerName" class="form-label">Customer_Id</label>
+    <input type="text" class="form-control" id="CustomerId" aria-describedby="emailHelp" name="customer_id">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>
+
+<div class="customerList container rounded p-5">
+  <div class="h1"> Customer Details</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Customer Id</th>
+        <th scope="col">Price in Rs</th>
+      </tr>
+    </thead>
+
+    <% for(var i=0; i < customerData.length; i++) { %>
+      <tr>
+        <td><%= customerData[i].getcustomerdetails %></td>
+
+      </tr>
+    <% } %>
+  </table>
+</div>
+
+<div class="cancelOrder container rounded p-5">
+  <div class="h1"> New Customer</div>
+  <form action="customer/new" method="POST">
+  <div class="mb-3">
+    <label for="" class="form-label">Customer Id</label>
+    <input type="text" class="form-control" id="productIdCancel" name="customerId">
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Customer Name</label>
+    <input type="text" class="form-control" id="productIdCancel" name="customerName">
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+</div>
+<div class="customerList container rounded p-5">
+  <div class="h1"> Customer List</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Id </th>
+      </tr>
+    </thead>
+    <% for(var i=0; i < customerList.length; i++) { %>
+      <tr>
+        <th scope="row"><%= customerList[i].customer_name %></th>
+        <td><%= customerList[i].customer_id %></td>
+      </tr>
+    <% } %>
+  </table>
+</div>
+
+<p>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+</p>
+
+<%- include("footer") %>

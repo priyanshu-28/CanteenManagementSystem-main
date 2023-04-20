@@ -1,0 +1,66 @@
+<%- include("header") %>
+
+
+
+
+<div class="container rounded p-5">
+
+  <div class="card m-2">
+    <div class="card-body">
+      <h3 class="card-title">Total Sale of Canteen</h3>
+      <h4 class="card-subtitle mb-2 text-muted"><%= totalSale %></h4>
+      <p class="card-text"></p>
+    </div>
+  </div>
+  <div class="card m-2">
+    <div class="card-body">
+      <h3 class="card-title">Total Orders</h3>
+      <h4 class="card-subtitle mb-2 text-muted"><%= totalOrders %></h4>
+      <p class="card-text"></p>
+    </div>
+  </div>  <div class="card m-2">
+      <div class="card-body">
+        <h3 class="card-title">Count of Customers</h3>
+        <h4 class="card-subtitle mb-2 text-muted"><%= customerCount %></h4>
+        <p class="card-text"></p>
+      </div>
+    </div>
+    <div class="card m-2">
+      <div class="card-body">
+        <h3 class="card-title">Cost of Material</h3>
+        <h4 class="card-subtitle mb-2 text-muted"><%= materialCost %></h4>
+        <p class="card-text"></p>
+      </div>
+    </div>
+    <div class="card m-2">
+      <div class="card-body">
+        <h3 class="card-title">Max Paying Customer</h3>
+        <h4 class="card-subtitle mb-2 text-muted"><%= maxPayingCustomer%></h4>
+        <p class="card-text"></p>
+      </div>
+    </div>
+</div>
+
+<div class="feedbackList container rounded p-5">
+  <div class="h1"> Feedback from Customers </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Feedback</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i=0; i < feedback.length; i++) { %>
+        <tr>
+          <th scope="row"><%= feedback[i].customer_name %></th>
+          <td><%= feedback[i].feedback_text %></td>
+        </tr>
+      <% } %>
+
+    </tbody>
+  </table>
+  </div>
+<p><br/><br/><br/><br/><br/></p>
+
+<%- include("footer") %>

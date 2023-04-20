@@ -1,0 +1,168 @@
+<%- include("header") %>
+
+
+<div class="container p-5">
+  <div class="h1">New Product </div>
+    <form action="/caterer/product/new" method="POST">
+      <div class="mb-3">
+        <label for="product_name" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="product_name" name="product_name" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="product_id" class="form-label">Product Id</label>
+        <input type="number" class="form-control" id="product_id" name="product_id" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3 form-check">
+        <label for="availability" class="form-check-label">availability</label>
+        <input type="checkbox" class="form-check-input" id="availability" name="availability" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">price</label>
+        <input type="number" class="form-control" id="price" name="price" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="mat_req" class="form-label">Id of Material Required</label>
+        <input type="number" class="form-control" id="mat_req_id" name="mat_req_id" aria-describedby="emailHelp">
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+<div class="container p-5">
+  <div class="h1">
+    Delete Product
+  </div>
+  <form class="" action="/caterer/product/delete" method="post">
+    <div class="mb-3">
+      <label for="product_id" class="form-label">Product Id</label>
+      <input type="number" class="form-control" id="product_id" name="product_id" aria-describedby="emailHelp">
+    </div>
+    <button type="submit" class="btn btn-danger">Submit</button>
+  </form>
+</div>
+
+
+<div class="productList container rounded p-5">
+  <div class="h1"> Product List</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Id </th>
+        <th scope="col">Product availability</th>
+        <th scope="col">Price in Rs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i=0; i < productList.length; i++) { %>
+        <tr>
+          <th scope="row"><%= productList[i].product_name %></th>
+          <td><%= productList[i].product_id %></td>
+          <td><%= productList[i].availability %></td>
+          <td><%= productList[i].price %></td>
+        </tr>
+      <% } %>
+
+    </tbody>
+  </table>
+  </div>
+
+
+
+  <div class="productList container rounded p-5">
+    <div class="h1"> Order List</div>
+    <a href="#" class="btn btn-info">Pending</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Order Id</th>
+          <th scope="col">Customer Id </th>
+          <th scope="col">Customer Name</th>
+          <th scope="col">Amount</th>
+          <th scope="col">items</th>
+          <th scope="col">Order Processed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0; i < orderList.length; i++) { %>
+          <tr>
+            <th scope="row"><%= orderList[i].order_id %></th>
+            <td><%= orderList[i].customer_id %></td>
+            <td><%= orderList[i].customer_name %></td>
+            <td><%= orderList[i].amount %></td>
+            <td><%= orderList[i].items %></td>
+            <td><%= orderList[i].processed %></td>
+            <!-- <td><a href="/order/processed/:<%=orderList[i].order_id%>" class="btn btn-success">Done</a></td> -->
+          </tr>
+        <% } %>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container p-5">
+    <div class="h1">
+      Update Order
+    </div>
+    <form class="" action="/caterer/order/update" method="post">
+      <div class="mb-3">
+        <label for="updateOrder_id" class="form-label">Order Id</label>
+        <input type="number" class="form-control" id="product_id" name="updateOrder_id" aria-describedby="emailHelp">
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+
+
+  <div class="cancelOrder container rounded p-5">
+    <div class="h1"> Cancel Order</div>
+    <form action="order/cancel" method="POST">
+    <div class="mb-3">
+      <label for="" class="form-label">Order Id</label>
+      <input type="number" class="form-control" id="productIdCancel" name="order_id">
+    </div>
+    <button type="submit" class="btn btn-danger">Cancel</button>
+  </form>
+  </div>
+
+  <div class="productList container rounded p-5">
+    <div class="h1"> Supplier List</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Supplier Name</th>
+          <th scope="col">Supplier Id </th>
+          <th scope="col">Material</th>
+          <th scope="col">Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0; i < orderList.length; i++) { %>
+          <tr>
+            <th scope="row"><%= orderList[i].order_id %></th>
+            <td><%= orderList[i].customer_id %></td>
+            <td><%= orderList[i].customer_name %></td>
+            <td><%= orderList[i].amount %></td>
+            <td><%= orderList[i].items %></td>
+          </tr>
+        <% } %>
+
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="container m-3">
+    <br />
+    <br />
+    <br />
+  </div>
+
+
+
+
+
+<%- include("footer") %>

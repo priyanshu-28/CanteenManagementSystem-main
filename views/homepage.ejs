@@ -1,0 +1,125 @@
+<%- include("header") %>
+<!-- Button trigger modal -->
+<!-- Button trigger modal -->
+
+<div class="newOrderForm container rounded p-5">
+
+  <div class="h1"> New Order</div>
+  <form action="order/new" method="POST">
+
+  <div class="mb-3">
+    <label for="CustomerId" class="form-label">Customer Id</label>
+    <input type="text" class="form-control" id="CustomerName" aria-describedby="emailHelp" name="customer_id">
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Quantity</label>
+    <input type="number" class="form-control" id="quantity" name="quantity">
+  </div>
+  <div class="mb-3">
+    <label for="customer_name" class="form-label">Your Good Name</label>
+    <input type="text" class="form-control" id="quantity" name="customer_name">
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Product Id</label>
+    <input type="number" class="form-control" id="product_id" name="product_id">
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Product Id </th>
+      </tr>
+    </thead>
+    <tbody id="cartList">
+
+    </tbody>
+  </table>
+  <input type="text" class="d-none" id="product_list_input" name="product_list">
+  <button type="button" class="btn btn-success" id="addToCart">Add</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+
+
+
+  <script type="text/javascript">
+      const addButton = document.getElementById("addToCart");
+      let product_list = [];
+      addButton.addEventListener('click',(event) => {
+        console.log("button click")
+        const product_id = document.getElementById("product_id");
+        product_list.push(product_id.value);
+        console.log(product_list);
+        let html = '';
+        console.log("Executed here", product_list)
+        for (var i = 0; i<product_list.length; i++){
+             html+= '<tr><td>' +product_list[i]+ '</td></tr>';
+         }
+
+        document.getElementById("product_list_input").value = String(product_list);
+        document.getElementById("cartList").innerHTML = html;
+
+
+      });
+
+
+  </script>
+
+<div class="cancelOrder container rounded p-5">
+  <div class="h1"> Cancel Order</div>
+  <form action="order/cancel" method="POST">
+  <div class="mb-3">
+    <label for="" class="form-label">Order Id</label>
+    <input type="number" class="form-control" id="productIdCancel" name="order_id">
+  </div>
+  <button type="submit" class="btn btn-danger">Cancel</button>
+</form>
+</div>
+
+<div class="productList container rounded p-5">
+  <div class="h1"> Product List</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Id </th>
+        <th scope="col">Product availability</th>
+        <th scope="col">Price in Rs</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i=0; i < productList.length; i++) { %>
+        <tr>
+          <th scope="row"><%= productList[i].product_name %></th>
+          <td><%= productList[i].product_id %></td>
+          <td><%= productList[i].availability %></td>
+          <td><%= productList[i].price %></td>
+        </tr>
+      <% } %>
+
+    </tbody>
+  </table>
+</div>
+
+<div class="newFeedback container rounded p-5">
+  <div class="h1">Feedback</div>
+  <form action="feedback/new" method="POST">
+  <div class="mb-3">
+    <label for="CustomerId" class="form-label">Customer Id</label>
+    <input type="text" class="form-control" id="customer_id" aria-describedby="emailHelp" name="customer_id">
+  </div>
+  <div class="mb-3">
+    <label for="customer_name" class="form-label">Your Good Name</label>
+    <input type="text" class="form-control" id="customer_name" name="customer_name">
+  </div>
+  <div class="mb-3">
+    <label for="feedback_desc" class="form-label">Feedback</label>
+    <input type="text" class="form-control" id="feedback_desc" name="feedback_desc">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+<p><br/><br/><br/><br/><br/></p>
+
+
+<%- include("footer") %>

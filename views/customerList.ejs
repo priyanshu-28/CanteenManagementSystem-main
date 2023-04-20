@@ -1,0 +1,39 @@
+
+<%- include("header") %>
+
+
+
+
+<div class="productList container rounded p-5">
+  <div class="h1"> Customer List</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Customer_Id</th>
+        <th scope="col">Amount Paid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i=0; i < productList.length; i++) { %>
+        <tr>
+          <th scope="row"><%= productList[i].customer_name %></th>
+          <td><%= productList[i].customer_id %></td>
+          <td><%= productList[i].customer_amount %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+  </div>
+
+<div class="container m-3">
+  <br />
+  <br />
+  <br />
+</div>
+
+
+
+
+
+<%- include("footer") %>
